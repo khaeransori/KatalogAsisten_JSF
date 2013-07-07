@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Profil Asisten Lab</title>
+
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/bootstrap-responsive.min.css" />
+        <h:outputStylesheet name="css/font-awesome.css" />
+        <h:outputStylesheet name="css/custom.css" />
+        
+        <h:outputScript name="js/jquery.min.js" />
+        <h:outputScript name="js/jquery-ui.min.js" />
+        <h:outputScript name="js/lodash.min.js" />
+	<h:outputScript name="js/bootstrap.min.js" />
+        <h:outputScript name="js/custom.js" />
+
+    </h:head>
+    <h:body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">#{msgs.ShortTitle}</a>
+                    <div class="nav-collapse collapse">       
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <br/><br/><br />
+            
+            <div class="well">
+                <div class="row">
+                    <div class="span">
+                        <h3>#{msgs.Title}</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="well">
+                <h:form>
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">
+                            <div class="container">
+                            <a class="brand" href="#">Profil Asisten Lab</a>
+                            <div class="nav-collapse">
+                                <ul class="nav">
+                                    <li><h:commandLink action="#{katalog.prepareCreate()}" value="Tambah Asisten Lab"/></li>    
+                                </ul>
+                            </div>
+                            </div>
+                        </div><!-- /navbar-inner -->
+                    </div><!-- /navbar -->
+                    
+                    <section>
+                        <h:dataTable var="row" value="#{katalog.items}" class="table table-hover table-condensed">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{msgs.NIM}" />
+                                </f:facet>
+                                <h:outputText value="#{row.nim}" />
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{msgs.Nama}" />
+                                </f:facet>
+                                <h:outputText value="#{row.nama}" />
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{msgs.Praktikum}" />
+                                </f:facet>
+                                <h:outputText value="#{row.praktikum} #{row.bab}" />
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Aksi" />
+                                </f:facet>
+                                <div class="btn-group">
+                                    <h:commandLink class="btn btn-small small-box" action="#{katalog.showDetail(row)}" value="Lihat Detail" />
+                                </div><!-- /btn-group -->
+                            </h:column>
+                        </h:dataTable> 
+                        <div class="pagination pagination-centered">
+                            <ul>
+                                 <h:outputText value="Item #{katalog.pagingInfo.firstItem + 1} .. 
+                                  #{katalog.pagingInfo.lastItem} of
+                                  #{katalog.pagingInfo.itemCount} "/>
+                                <h:commandButton class="btn btn-small small-box" action="#{katalog.prev}" value="#{msgs.Previous}"
+                                                 rendered="#{katalog.pagingInfo.isPrevItems}" />
+                                <h:commandButton class="btn btn-small small-box" action="#{katalog.next}" value="#{msgs.Next}"
+                                                 rendered="#{katalog.pagingInfo.isNextItems}" />           
+                            </ul>
+                        </div>
+                    </section>
+                </h:form>
+            </div>
+            <footer class="well">
+                <p>#{msgs.Description}</p>
+            </footer>
+        </div> <!-- /container -->
+    </h:body>
+</html>

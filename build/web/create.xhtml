@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Tambah Asisten Baru</title>
+
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/bootstrap-responsive.min.css" />
+        <h:outputStylesheet name="css/font-awesome.css" />
+        <h:outputStylesheet name="css/custom.css" />
+        
+        <h:outputScript name="js/jquery.min.js" />
+        <h:outputScript name="js/jquery-ui.min.js" />
+        <h:outputScript name="js/lodash.min.js" />
+	<h:outputScript name="js/bootstrap.min.js" />
+        <h:outputScript name="js/custom.js" />
+
+    </h:head>
+    <h:body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">#{msgs.ShortTitle}</a>
+                    <div class="nav-collapse collapse">         
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <br/><br/><br />
+            
+            <div class="well">
+                <div class="row">
+                    <div class="span">
+                        <h3>#{msgs.Title}</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="well">
+                <h:form>                    
+                    <section>
+                        <div class="control-group">
+                            <legend>Manajemen Asisten Lab</legend>
+                            <label class="control-label" for="nim"><h:outputLabel value="NIM *"/></label>
+                            <div class="controls">
+                                <h:inputText value="#{katalog.item.nim}" required="true" requiredMessage="NIM is required"/>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="nama"><h:outputLabel value="#{msgs.Nama} *"/></label>
+                            <div class="controls">
+                                <h:inputText value="#{katalog.item.nama}" required="true" requiredMessage="Nama is required"/>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="angkatan"><h:outputLabel value="#{msgs.Angkatan} *"/></label>
+                            <div class="controls">
+                                <h:inputText value="#{katalog.item.angkatan}" required="true" requiredMessage="Angkatan is required"/>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="praktikum"><h:outputLabel value="#{msgs.Praktikum} *"/></label>
+                            <div class="controls">
+                                <h:inputText value="#{katalog.item.praktikum}" required="true" requiredMessage="Praktikum is required"/>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="bab"><h:outputLabel value="#{msgs.Bab} *"/></label>
+                            <div class="controls">
+                                <h:inputText value="#{katalog.item.bab}" required="true" requiredMessage="Bab is required"/>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="foto"><h:outputLabel value="#{msgs.Foto}"/></label>
+                            <div class="controls">
+                                <h:inputText value="#{katalog.item.foto}"/>
+                            </div>
+                        </div>
+
+                        *) is a mandatory field
+                        <br/>
+                        <h:commandLink class="btn btn-small small-box" action="#{katalog.create()}" value="Simpan"/>
+                        &nbsp;
+                        <h:commandLink class="btn btn-small small-box" value="Kembali ke Home" action="/index" immediate="true"/>
+                    </section>
+                </h:form>
+            </div>
+            <footer class="well">
+                <p>#{msgs.Description}</p>
+            </footer>
+        </div> <!-- /container -->
+    </h:body>
+</html>

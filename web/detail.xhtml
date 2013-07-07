@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Detail Asisten Baru</title>
+
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/bootstrap-responsive.min.css" />
+        <h:outputStylesheet name="css/font-awesome.css" />
+        <h:outputStylesheet name="css/custom.css" />
+        
+        <h:outputScript name="js/jquery.min.js" />
+        <h:outputScript name="js/jquery-ui.min.js" />
+        <h:outputScript name="js/lodash.min.js" />
+	<h:outputScript name="js/bootstrap.min.js" />
+        <h:outputScript name="js/custom.js" />
+
+    </h:head>
+    <h:body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">#{msgs.ShortTitle}</a>
+                    <div class="nav-collapse collapse">         
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <br/><br/><br />
+            
+            <div class="well">
+                <div class="row">
+                    <div class="span">
+                        <h3>#{msgs.Title}</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="well">
+                <h:form>                    
+                    <section>
+                        <div class="control-group">
+                            <legend>Detail #{katalog.item.nama} (#{katalog.item.nim})</legend>
+                            <label class="control-label" for="nim"><b><h:outputText value="#{msgs.NIM}" /></b></label>
+                            <div class="controls">
+                                <h:outputText value="#{katalog.item.nim}" title="NIM" />
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="nama"><b><h:outputText value="#{msgs.Nama}" /></b></label>
+                            <div class="controls">
+                                <h:outputText value="#{katalog.item.nama}" title="Nama" />
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="angkatan"><b><h:outputText value="#{msgs.Angkatan}" /></b></label>
+                            <div class="controls">
+                                <h:outputText value="#{katalog.item.angkatan}" title="Angkatan" />
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="praktikum"><b><h:outputText value="#{msgs.Praktikum}" /></b></label>
+                            <div class="controls">
+                                <h:outputText value="#{katalog.item.praktikum}&nbsp;(#{katalog.item.bab})" title="Praktikum" />
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="foto"><b><h:outputText value="#{msgs.Foto}" /></b></label>
+                            <div class="controls">
+                                <h:graphicImage library="images" name="#{katalog.item.foto}" title="urlFoto" />
+                            </div>
+                        </div>
+                        
+                        <h:commandLink class="btn btn-small small-box" action="edit" value="Ubah"/>&nbsp;
+                        <h:commandLink class="btn btn-small small-box" action="#{katalog.deleteAndView()}" value="Hapus"/>&nbsp;
+                        <h:commandButton class="btn btn-small small-box" id="back" value="Kembali" action="index"/>
+
+                    </section>
+                </h:form>
+            </div>
+            <footer class="well">
+                <p>#{msgs.Description}</p>
+            </footer>
+        </div> <!-- /container -->
+    </h:body>
+</html>
